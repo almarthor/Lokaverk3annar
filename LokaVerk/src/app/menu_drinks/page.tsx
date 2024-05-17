@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+
+=======
 /* import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -25,3 +28,4 @@ const MenuDrinks = () => {
 };
 
 export default MenuDrinks; */
+>>>>>>> parent of 0d97ac7 (.)
