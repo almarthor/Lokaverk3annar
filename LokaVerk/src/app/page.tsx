@@ -1,5 +1,6 @@
 "use client";
 import Caroucell from "./components/caroucell/caroucell_img";
+import FindOrder from "./components/find_order/find_order";
 import Footer from "./components/footer/footer";
 import TopNav from "./components/navbar/TopNav";
 
@@ -25,7 +26,7 @@ export default function Home() {
             </a>
           </div>
           <div className="col-span-2 border-2 border-black rounded-md m-5 bg-[#3E6053]">
-            <div>HI</div>
+            <FindOrder />
           </div>
           <div className="col-span-2 border-2 border-black rounded-md m-5 bg-[#C16757]">
             <h1 className="p-4 text-white font-bold">
