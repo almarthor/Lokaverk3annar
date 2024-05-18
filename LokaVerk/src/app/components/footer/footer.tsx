@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const footer = () => {
   return (
-    <div className=" absolute flex items-end w-full bg-white bottom-0 border-t-[#3E6053] border-2">
+    <div className="  flex items-end w-full bg-white bottom-0 border-t-[#3E6053] border-2">
       <footer className="w-full text-gray-700 bg-gray-100 body-font">
         <div className="container flex flex-col  px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
           <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">

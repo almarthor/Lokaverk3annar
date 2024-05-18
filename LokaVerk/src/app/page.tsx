@@ -1,6 +1,4 @@
 "use client";
-
-import BgImage from "./components/bg-image/bg_image";
 import Caroucell from "./components/caroucell/caroucell_img";
 import Footer from "./components/footer/footer";
 import TopNav from "./components/navbar/TopNav";
@@ -9,7 +7,6 @@ export default function Home() {
   return (
     <div>
       <TopNav />
-<<<<<<< HEAD
       <div className="bg-[url('/background.jpg')] bg-cover bg-center">
         <div className="lg:grid grid-cols-4 lg:px-56 md:px-32 pt-14 content-center justify-center">
           <div className="lg:grid grid-cols-4 col-span-3 border-2 border-black rounded-md m-5 bg-[#3E6053]">
@@ -28,7 +25,7 @@ export default function Home() {
             </a>
           </div>
           <div className="col-span-2 border-2 border-black rounded-md m-5 bg-[#3E6053]">
-            <FindOrder />
+            <div>HI</div>
           </div>
           <div className="col-span-2 border-2 border-black rounded-md m-5 bg-[#C16757]">
             <h1 className="p-4 text-white font-bold">
@@ -39,10 +36,6 @@ export default function Home() {
             </h1>
           </div>
         </div>
-=======
-      <div>
-        <Caroucell />
->>>>>>> parent of 0d97ac7 (.)
       </div>
       <Footer />
     </div>
