@@ -7,23 +7,16 @@ const NavBut = () => {
   return (
     <>
       <a
-        href="./menu_food"
-        className="border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold text-black mt-1 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
-      >
-        ORDER
-      </a>
-      <a
-        href="./pantarnir"
-        className="border-solid border-b-2 border-[#3E6053] rounded-md p-1 font-bold text-black mt-1 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
-      >
-        WADuWANTed
-      </a>
-
-      <a
         href="/"
         className=" container border-solid border-b-2 border-[#3E6053] rounded-md p-1 font-bold text-black mt-1 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
       >
         HOME
+      </a>
+      <a
+        href="./menu_food"
+        className="border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold text-black mt-1 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
+      >
+        ORDER
       </a>
     </>
   );
@@ -36,7 +29,7 @@ const Nav = () => {
   };
   return (
     <>
-      <nav className=" w-1/3 flex justify-end ">
+      <nav className=" flex justify-between ">
         <div className="hidden w-full md:flex justify-end">
           <NavBut />
         </div>
