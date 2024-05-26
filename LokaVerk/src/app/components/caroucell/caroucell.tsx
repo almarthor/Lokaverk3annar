@@ -18,7 +18,7 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
 
   return (
     <div>
-      <img src={imageUrl[imageIndex]} className=" h-56 w-full" />
+      <img src={imageUrl[imageIndex]} className=" h-56 w-full rounded-md" />
     </div>
   );
 }

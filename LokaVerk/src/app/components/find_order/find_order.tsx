@@ -5,8 +5,10 @@ const FindOrder = () => {
       <p className="mb-6 text-white">
         You can find your bitsy order by giving us your email adress
       </p>
-      <input type="text" placeholder="Email" className=" p-2 rounded-xl" />
-      <button className=" bg-slate-100 p-2 m-2">Dont press me</button>
+      <input type="text" placeholder="Email" className=" p-2 mr-2 rounded-xl" />
+      <button className=" rounded-md bg-slate-100 p-2 mt-2">
+        Dont press me
+      </button>
     </div>
   );
 };
