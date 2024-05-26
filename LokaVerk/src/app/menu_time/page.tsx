@@ -1,9 +1,12 @@
 "use client";
-"use client";
 import React, { useEffect, useRef } from "react";
+import { useOrder } from "../../context/OrderContext";
+import { useRouter } from "next/navigation";
 
 export default function TimeChooser() {
+  const { setSelectedDate } = useOrder();
   const dateTimePickerRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const dateTimePicker = dateTimePickerRef.current;
@@ -15,6 +18,16 @@ export default function TimeChooser() {
       dateTimePicker.min = formattedDate;
     }
   }, []);
+
+  const handleSubmit = () => {
+    if (dateTimePickerRef.current) {
+      setSelectedDate(dateTimePickerRef.current.value);
+      console.log("Selected Date:", dateTimePickerRef.current.value);
+      setTimeout(() => {
+        router.push("/menu_sum");
+      }, 100);
+    }
+  };
 
   return (
     <div>
@@ -30,7 +43,10 @@ export default function TimeChooser() {
             ref={dateTimePickerRef}
             className="px-3 py-1 m-2"
           />
-          <button className="bg-white text-center mx-28 p-2 rounded-md font-bold">
+          <button
+            className="bg-white text-center mx-28 p-2 rounded-md font-bold"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </div>

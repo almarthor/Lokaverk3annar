@@ -9,11 +9,5 @@ export default function MenuDrinksLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <section>
-      <TopNav />
-      {children}
-      <Footer />
-    </section>
-  );
+  return <section>{children}</section>;
 }

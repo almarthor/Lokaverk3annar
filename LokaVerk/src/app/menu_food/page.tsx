@@ -1,18 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useOrder } from "../../context/OrderContext";
+import { useRouter } from "next/navigation";
 
 interface Meal {
-  id: string;
-  photo: string;
-  title: string;
-  description: string;
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strInstructions: string;
 }
 
 export default function Food() {
+  const { setSelectedFood } = useOrder();
   const [meal, setMeal] = useState<Meal | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const MAX_WORDS = 150;
+  const router = useRouter();
 
   useEffect(() => {
     const fetchMeal = async () => {
@@ -26,10 +29,10 @@ export default function Food() {
         const data = await response.json();
         const mealData = data.meals[0];
         setMeal({
-          id: mealData.idMeal,
-          photo: mealData.strMealThumb,
-          title: mealData.strMeal,
-          description: mealData.strInstructions,
+          idMeal: mealData.idMeal,
+          strMeal: mealData.strMeal,
+          strMealThumb: mealData.strMealThumb,
+          strInstructions: mealData.strInstructions,
         });
         setLoading(false);
       } catch (error) {
@@ -41,18 +44,20 @@ export default function Food() {
     fetchMeal();
   }, []);
 
-  const handleRefresh = () => {
-    setLoading(true);
-    setError(null);
-    setMeal(null);
-    window.location.reload();
-  };
-
-  const maxWordsDesc = (description: string, maxWords: number) => {
-    const words = description.split(" ");
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + "..."
-      : description;
+  const handleSelect = () => {
+    if (meal) {
+      const selectedDish = {
+        id: meal.idMeal,
+        name: meal.strMeal,
+        description: meal.strInstructions,
+        imageSource: meal.strMealThumb,
+      };
+      setSelectedFood(selectedDish);
+      console.log("Selected Food:", selectedDish);
+      setTimeout(() => {
+        router.push("/menu_drinks");
+      }, 100);
+    }
   };
 
   return (
@@ -72,8 +77,8 @@ export default function Food() {
             </p>
           ) : (
             <img
-              src={meal?.photo}
-              alt={meal?.title}
+              src={meal?.strMealThumb}
+              alt={meal?.strMeal}
               className="sm:w-[572px] sm:h-[572px] rounded-lg"
             />
           )}
@@ -81,21 +86,19 @@ export default function Food() {
         <div className="col-start-3 col-span-2 row-span-2 border-2 border-black rounded-lg bg-[#c2a517] sm:w-[572px] sm:h-[572px] flex flex-col justify-between p-4">
           <div>
             <h1 className="font-bold text-xl">
-              {meal ? meal.title : "Loading..."}
+              {meal ? meal.strMeal : "Loading..."}
             </h1>
-            <p>
-              {meal ? maxWordsDesc(meal.description, MAX_WORDS) : "Loading..."}
-            </p>
+            <p>{meal ? meal.strInstructions : "Loading..."}</p>
           </div>
           <div className="flex space-x-4">
             <button
               className="bg-red-500 text-white p-2 rounded-md"
-              onClick={() => (window.location.href = "/menu_drinks")}
+              onClick={handleSelect}
             >
               I WANT THAT
             </button>
             <button
-              onClick={handleRefresh}
+              onClick={() => window.location.reload()}
               className="bg-red-500 text-white p-2 rounded-md"
             >
               I DON'T WANT THAT

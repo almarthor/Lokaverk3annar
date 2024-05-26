@@ -1,15 +1,10 @@
 "use client";
 import Caroucell from "./components/caroucell/caroucell_img";
 import FindOrder from "./components/find_order/find_order";
-import Footer from "./components/footer/footer";
-import Logo from "./components/navbar/Logo";
-import TopNav from "./components/navbar/TopNav";
 
 export default function Home() {
   return (
     <div className=" font-serif">
-      <TopNav />
-
       <div className="lg:grid grid-cols-6 lg:px-56 md:px-32 pt-14 content-center justify-center">
         <div className="col-span-2 row row-span-2 border-2 border-black rounded-md m-5 bg-[#C16757]">
           <h1 className="p-4 text-white font-bold">
@@ -38,7 +33,6 @@ export default function Home() {
           <FindOrder />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
