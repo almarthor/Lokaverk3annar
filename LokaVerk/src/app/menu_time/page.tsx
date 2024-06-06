@@ -30,7 +30,7 @@ export default function TimeChooser() {
   };
 
   return (
-    <div>
+    <div className="bg-[url('/background.jpg')] bg-cover bg-fixed min-h-screen">
       <div className="grid grid-cols-4 grid-rows-4 p-6">
         <div className="col-span-4 row-span-1 bg-slate-500 text-center h-auto w-full">
           <h1 className="text-4xl text-white pt-10">

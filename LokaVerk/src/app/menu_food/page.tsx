@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useOrder } from "../../context/OrderContext";
 import { useRouter } from "next/navigation";
+import { maxWords } from "../utyls";
 
 interface Meal {
   idMeal: string;
@@ -61,7 +62,7 @@ export default function Food() {
   };
 
   return (
-    <div className="bg-[url('/background.jpg')] bg-cover bg-center min-h-screen">
+    <div className="bg-[url('/background.jpg')] bg-cover bg-fixed min-h-screen">
       <h1 className="font-bold text-3xl text-center pt-5 text-white">
         FOOD SELECTION
       </h1>
@@ -88,7 +89,7 @@ export default function Food() {
             <h1 className="font-bold text-xl">
               {meal ? meal.strMeal : "Loading..."}
             </h1>
-            <p>{meal ? meal.strInstructions : "Loading..."}</p>
+            <p>{meal ? maxWords(meal.strInstructions, 100) : "Loading..."}</p>
           </div>
           <div className="flex space-x-4">
             <button
