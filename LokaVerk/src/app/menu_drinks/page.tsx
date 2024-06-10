@@ -20,14 +20,14 @@ export default function DrinksMenu(): JSX.Element {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Netid er ekki að virka watt");
         }
         return response.json();
       })
       .then((data) => {
         setDrinks(data.drinks);
       })
-      .catch((error) => console.error("Error fetching drinks:", error));
+      .catch((error) => console.error("Ohh veseeeen:", error));
   }, []);
 
   const handleSelect = (drink: Drink) => {
@@ -38,7 +38,6 @@ export default function DrinksMenu(): JSX.Element {
       imageSource: drink.strDrinkThumb,
     };
     setSelectedDrink(selectedDrink);
-    console.log("Selected Drink:", selectedDrink);
     setTimeout(() => {
       router.push("/menu_time");
     }, 100);

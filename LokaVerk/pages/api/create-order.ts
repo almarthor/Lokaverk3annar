@@ -53,7 +53,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (!isOrder(req.body)) {
       res.status(400).json({
         success: false,
-        error: "Must supply all properties of an order",
+        error: "Þarft að panta allt aður",
       });
       return;
     }
@@ -61,7 +61,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (emailAlreadyTaken(req.body.email)) {
       res.status(400).json({
         success: false,
-        error: "Email already reserved",
+        error: "ert buinn að nota þetta email",
       });
       return;
     }
@@ -84,9 +84,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (order) {
       res.status(200).json(order);
     } else {
-      res.status(404).json({ error: "Order not found" });
+      res.status(404).json({ error: "erd eggert buid ad banda" });
     }
   } else {
-    res.status(405).json({ error: "Method not allowed" });
+    res.status(405).json({ error: "O O O madd eggi" });
   }
 }

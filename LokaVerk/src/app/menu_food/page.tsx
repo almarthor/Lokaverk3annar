@@ -25,7 +25,7 @@ export default function Food() {
           "https://themealdb.com/api/json/v1/1/random.php"
         );
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("internet vesen");
         }
         const data = await response.json();
         const mealData = data.meals[0];
@@ -37,7 +37,7 @@ export default function Food() {
         });
         setLoading(false);
       } catch (error) {
-        setError("Error fetching the meal data");
+        setError("obbosí");
         setLoading(false);
       }
     };
@@ -54,7 +54,6 @@ export default function Food() {
         imageSource: meal.strMealThumb,
       };
       setSelectedFood(selectedDish);
-      console.log("Selected Food:", selectedDish);
       setTimeout(() => {
         router.push("/menu_drinks");
       }, 100);

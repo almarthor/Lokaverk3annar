@@ -1,6 +1,6 @@
 "use client";
 
-export default function MenuDrinksLayout({
+export default function MenuFoodLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -13,8 +13,7 @@ export default function TimeChooser() {
 
     if (dateTimePicker) {
       const currentDate = new Date();
-      const formattedDate = currentDate.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MM
-
+      const formattedDate = currentDate.toISOString().slice(0, 16);
       dateTimePicker.min = formattedDate;
     }
   }, []);
@@ -22,7 +21,6 @@ export default function TimeChooser() {
   const handleSubmit = () => {
     if (dateTimePickerRef.current) {
       setSelectedDate(dateTimePickerRef.current.value);
-      console.log("Selected Date:", dateTimePickerRef.current.value);
       setTimeout(() => {
         router.push("/menu_sum");
       }, 100);

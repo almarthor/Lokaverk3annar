@@ -2,21 +2,42 @@
 import React, { useState, useEffect } from "react";
 import { useOrder } from "../../context/OrderContext";
 import { maxWords } from "../utyls";
+import { useRouter } from "next/navigation";
 
 export default function SumRes() {
-  const { selectedFood, selectedDrink, selectedDate } = useOrder();
+  const { selectedFood, selectedDrink, selectedDate, orderFetchedByEmail } =
+    useOrder();
   const [email, setEmail] = useState<string>("");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    console.log("Selected Food in SumRes:", selectedFood);
-    console.log("Selected Drink in SumRes:", selectedDrink);
-    console.log("Selected Date in SumRes:", selectedDate);
+    console.log("valinn matur", selectedFood);
+    console.log("valinn drikkur", selectedDrink);
+    console.log("valið date", selectedDate);
   }, [selectedFood, selectedDrink, selectedDate]);
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async () => {
-    if (!selectedFood || !selectedDrink || !selectedDate || !email) {
-      alert("Please ensure all fields are filled out correctly.");
+    if (
+      !selectedFood ||
+      !selectedDrink ||
+      !selectedDate ||
+      (!orderFetchedByEmail && !email)
+    ) {
+      alert("Þarft að fylla allt ut oki.");
       return;
+    }
+
+    if (!orderFetchedByEmail && !validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    } else {
+      setEmailError(null);
     }
 
     const orderData = {
@@ -39,13 +60,14 @@ export default function SumRes() {
       const data = await response.json();
 
       if (data.success) {
-        alert("Order placed successfully!");
+        alert("Yibbí wowsa þetta virkar");
+        router.push("/");
       } else {
-        alert("Error placing order: " + data.error);
+        alert("Ehh villa :) " + data.error);
       }
     } catch (error) {
-      console.error("Error submitting order:", error);
-      alert("An error occurred while placing the order.");
+      console.error("Villa :(", error);
+      alert("VIIIIIILLLLLAAAAAAA");
     }
   };
 
@@ -96,19 +118,30 @@ export default function SumRes() {
           <h1 className="font-bold text-2xl">Date</h1>
           <p>{selectedDate}</p>
         </div>
-        <div className="bg-[#3E6053] row-start-5 h-full col-start-2 col-span-3 rounded-b-lg p-3">
-          <h1 className="font-bold text-2xl">Please enter your information</h1>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="text-black text-center p-1 mt-2"
-          />
-          <button className="p-1 bg-[#c2a517] md:ml-3" onClick={handleSubmit}>
-            Submit
-          </button>
-        </div>
+
+        {!orderFetchedByEmail && (
+          <>
+            <div className="bg-[#3E6053] row-start-5 h-full col-start-2 col-span-3 rounded-b-lg p-3">
+              <h1 className="font-bold text-2xl">
+                Please enter your information
+              </h1>
+              {emailError && <p className="text-red-500">{emailError}</p>}
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="text-black text-center p-1 mt-2"
+              />
+              <button
+                className="p-1 bg-[#c2a517] md:ml-3"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

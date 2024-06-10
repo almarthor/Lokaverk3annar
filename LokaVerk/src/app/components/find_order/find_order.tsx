@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 
 const FindOrder = () => {
   const [email, setEmail] = useState<string>("");
-  const { setSelectedFood, setSelectedDrink, setSelectedDate } = useOrder();
+  const {
+    setSelectedFood,
+    setSelectedDrink,
+    setSelectedDate,
+    setOrderFetchedByEmail,
+  } = useOrder();
   const router = useRouter();
 
   const handleFindOrder = async () => {
@@ -19,6 +24,7 @@ const FindOrder = () => {
         setSelectedFood(data.dish);
         setSelectedDrink(data.drinks[0]);
         setSelectedDate(data.date);
+        setOrderFetchedByEmail(true);
         router.push("/menu_sum");
       } else {
         alert(data.error || "Error fetching order");

@@ -17,11 +17,13 @@ interface Drink {
 
 interface OrderContextType {
   selectedFood: Dish | null;
-  setSelectedFood: (food: Dish) => void;
+  setSelectedFood: (food: Dish | null) => void;
   selectedDrink: Drink | null;
-  setSelectedDrink: (drink: Drink) => void;
+  setSelectedDrink: (drink: Drink | null) => void;
   selectedDate: string;
   setSelectedDate: (date: string) => void;
+  orderFetchedByEmail: boolean;
+  setOrderFetchedByEmail: (value: boolean) => void;
 }
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -29,7 +31,7 @@ const OrderContext = createContext<OrderContextType | undefined>(undefined);
 export const useOrder = () => {
   const context = useContext(OrderContext);
   if (!context) {
-    throw new Error("useOrder must be used within an OrderProvider");
+    throw new Error("wadd that a ad vera context");
   }
   return context;
 };
@@ -38,6 +40,8 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
   const [selectedFood, setSelectedFood] = useState<Dish | null>(null);
   const [selectedDrink, setSelectedDrink] = useState<Drink | null>(null);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const [orderFetchedByEmail, setOrderFetchedByEmail] =
+    useState<boolean>(false);
 
   return (
     <OrderContext.Provider
@@ -48,6 +52,8 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         setSelectedDrink,
         selectedDate,
         setSelectedDate,
+        orderFetchedByEmail,
+        setOrderFetchedByEmail,
       }}
     >
       {children}
