@@ -8,13 +8,13 @@ const NavBut = () => {
     <>
       <a
         href="/"
-        className=" container border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold text-black mt-4 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
+        className=" container border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold text-black mt-4 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white mb-3"
       >
         HOME
       </a>
       <a
         href="./menu_food"
-        className="border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold  text-black mt-4 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white"
+        className="border-solid border-b-2 border-[#3E6053] rounded-md  p-1 font-bold  text-black mt-4 w-36 text-center md:mr-7 hover:bg-[#3E6053] hover:text-white mb-3"
       >
         ORDER
       </a>

@@ -73,7 +73,7 @@ export default function SumRes() {
 
   return (
     <div className="bg-[url('/background.jpg')] bg-cover bg-fixed min-h-screen">
-      <div className="grid grid-cols-5 px-10 pb-10 items-center text-center text-white h-fit">
+      <div className="grid grid-cols-5 lg:px-10 pb-10 items-center text-center text-white h-fit">
         <div className="col-span-3 col-start-2">
           <h1 className="font-bold text-4xl text-[#c2a517] m-8">YOUR ORDER</h1>
         </div>
@@ -131,10 +131,10 @@ export default function SumRes() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="text-black text-center p-1 mt-2"
+                className="text-black text-center p-1 mt-2 mb-2"
               />
               <button
-                className="p-1 bg-[#c2a517] md:ml-3"
+                className="p-1 bg-[#c2a517] sm:ml-3"
                 onClick={handleSubmit}
               >
                 Submit

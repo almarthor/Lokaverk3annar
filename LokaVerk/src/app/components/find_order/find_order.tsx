@@ -46,7 +46,7 @@ const FindOrder = () => {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="p-2 mr-2 rounded-xl"
+        className="p-2 mr-2 rounded-xl lg:w-44"
       />
       <button
         className="rounded-md bg-slate-100 p-2 mt-2"

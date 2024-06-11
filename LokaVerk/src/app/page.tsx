@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="bg-opacity-20 font-serif bg-[url('/background.jpg')] bg-cover bg-fixed min-h-screen">
       <div
-        className="lg:grid grid-cols-6 lg:px-56 md:px-32 py-32 content-center justify-center
+        className="lg:grid grid-cols-6 lg:px-36 md:px-32 py-32 content-center justify-center
       "
       >
         <div className="col-span-2 row row-span-2 border-2 border-black rounded-md m-5 bg-[#C16757]">
